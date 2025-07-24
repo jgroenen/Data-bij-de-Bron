@@ -1,0 +1,145 @@
+@context:
+  skos: http://www.w3.org/2004/02/skos/core#
+  dqv: http://www.w3.org/ns/dqv#
+  dct: http://purl.org/dc/terms/
+  ex: http://example.org/data-quality-dimensions#
+
+concepts:
+  - id: ex:accuracy
+    type: skos:Concept
+    skos:prefLabel: "Accuracy"
+    skos:definition: "De mate waarin data overeenkomt met de werkelijkheid."
+    dct:source: ["DAMA-DMBOK", "ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Zorg dat data aan de bron rechtstreeks gebaseerd is op objectieve vaststelling, meetgegevens of formele documenten."
+
+  - id: ex:completeness
+    type: skos:Concept
+    skos:prefLabel: "Completeness"
+    skos:definition: "De mate waarin alle noodzakelijke gegevens aanwezig zijn."
+    dct:source: ["DAMA-DMBOK", "ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Maak invoer van essentiële gegevens verplicht aan de bron en voorkom lege of half ingevulde registraties."
+
+  - id: ex:consistency
+    type: skos:Concept
+    skos:prefLabel: "Consistency"
+    skos:definition: "De mate waarin data coherent is, zonder interne of externe tegenstrijdigheden."
+    dct:source: ["DAMA-DMBOK", "ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Zorg voor logische en semantische consistentie bij registratie. Gebruik validaties over velden heen en check met bestaande bronnen."
+
+  - id: ex:currentness
+    type: skos:Concept
+    skos:prefLabel: "Currentness"
+    skos:definition: "De mate waarin data een actuele weergave van de werkelijkheid biedt."
+    dct:source: ["ISO/IEC 25012"]
+    skos:related: [ex:timeliness]
+    ex:guidanceForAtSource: "Registreer wijzigingen direct zodra gebeurtenissen plaatsvinden, zodat de bron de werkelijkheid blijft representeren."
+
+  - id: ex:timeliness
+    type: skos:Concept
+    skos:prefLabel: "Timeliness"
+    skos:definition: "De mate waarin data beschikbaar is op het moment dat deze nodig is."
+    dct:source: ["DAMA-DMBOK"]
+    skos:related: [ex:currentness]
+    ex:guidanceForAtSource: "Ontsluit data direct of via notificaties. Vermijd wachtrijen, handmatige tussenstappen of vertragende interfaces."
+
+  - id: ex:uniqueness
+    type: skos:Concept
+    skos:prefLabel: "Uniqueness"
+    skos:definition: "De mate waarin data niet redundant is en entiteiten slechts eenmaal voorkomen."
+    dct:source: ["DAMA-DMBOK"]
+    skos:note: "Niet expliciet benoemd in ISO 25012, valt daar deels onder Consistency."
+    ex:guidanceForAtSource: "Voorkom dubbele invoer bij de bron, gebruik unieke sleutels of automatische deduplicatie."
+
+  - id: ex:validity
+    type: skos:Concept
+    skos:prefLabel: "Validity"
+    skos:definition: "De mate waarin data voldoet aan geldende regels, formaten en beperkingen."
+    dct:source: ["DAMA-DMBOK"]
+    skos:related: [ex:compliance]
+    ex:guidanceForAtSource: "Valideer data bij invoer op syntaxis, domeinen en referentiegegevens. Gebruik gedeelde standaarden."
+
+  - id: ex:integrity
+    type: skos:Concept
+    skos:prefLabel: "Integrity"
+    skos:definition: "De mate waarin relaties tussen data correct en logisch zijn."
+    dct:source: ["DAMA-DMBOK"]
+    skos:related: [ex:traceability, ex:consistency]
+    ex:guidanceForAtSource: "Zorg dat gekoppelde entiteiten aan elkaar blijven hangen (bijv. via ID's of referentie-integriteit), ook als data migreert of geüpdatet wordt."
+
+  - id: ex:credibility
+    type: skos:Concept
+    skos:prefLabel: "Credibility"
+    skos:definition: "De mate waarin data afkomstig is van een betrouwbare bron."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Documenteer wie de bronhouder is en waarom deze gezaghebbend is voor deze data. Herleidbaarheid van bevoegdheid is essentieel."
+
+  - id: ex:accessibility
+    type: skos:Concept
+    skos:prefLabel: "Accessibility"
+    skos:definition: "De mate waarin data toegankelijk is voor bevoegde gebruikers."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Zorg dat data ontsloten is via gestandaardiseerde interfaces (API's, bestandsuitwisseling) met duidelijke autorisatiestructuur."
+
+  - id: ex:availability
+    type: skos:Concept
+    skos:prefLabel: "Availability"
+    skos:definition: "De mate waarin data beschikbaar is wanneer nodig."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "De bron moet 24/7 of binnen afgesproken beschikbaarheid beschikbaar zijn voor afnemers, met monitoring op uptime."
+
+  - id: ex:confidentiality
+    type: skos:Concept
+    skos:prefLabel: "Confidentiality"
+    skos:definition: "De mate waarin data beschermd is tegen ongeautoriseerde toegang."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Beveilig data aan de bron volgens principes van 'need to know' en voorkom oversharing via logging, ACLs en pseudonimisering."
+
+  - id: ex:efficiency
+    type: skos:Concept
+    skos:prefLabel: "Efficiency"
+    skos:definition: "De mate waarin data efficiënt verwerkt en gebruikt kan worden."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Vermijd overbodige datavelden, optimaliseer formaten en maak bulkverwerking en incrementiële updates mogelijk."
+
+  - id: ex:precision
+    type: skos:Concept
+    skos:prefLabel: "Precision"
+    skos:definition: "De mate van detail of nauwkeurigheid waarmee data een waarde weergeeft."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Definieer per attribuut welk detailniveau vereist is. Bijvoorbeeld: decimeters voor geo, tijd op seconde-niveau."
+
+  - id: ex:understandability
+    type: skos:Concept
+    skos:prefLabel: "Understandability"
+    skos:definition: "De mate waarin de betekenis van data duidelijk is voor gebruikers."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Voorzie data van labels, definities en voorbeeldwaarden. Gebruik open metadata of vocabularia."
+
+  - id: ex:traceability
+    type: skos:Concept
+    skos:prefLabel: "Traceability"
+    skos:definition: "De mate waarin de herkomst en wijzigingen van data bekend en navolgbaar zijn."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Log wie, wanneer en waarom iets gewijzigd is. Versiebeheer of wijzigingshistorie moet standaard onderdeel zijn van de bron."
+
+  - id: ex:portability
+    type: skos:Concept
+    skos:prefLabel: "Portability"
+    skos:definition: "De mate waarin data tussen systemen verplaatst kan worden zonder verlies van betekenis of functionaliteit."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Gebruik open formaten en gestandaardiseerde datamodellen (bijv. XML, JSON-LD, RDF) om overdraagbaarheid te garanderen."
+
+  - id: ex:recoverability
+    type: skos:Concept
+    skos:prefLabel: "Recoverability"
+    skos:definition: "De mate waarin data hersteld kan worden bij verlies, fout of systeemuitval."
+    dct:source: ["ISO/IEC 25012"]
+    ex:guidanceForAtSource: "Implementeer back-ups, transacties en herstelpunten aan de bron. Beschrijf de recovery time objective (RTO)."
+
+  - id: ex:compliance
+    type: skos:Concept
+    skos:prefLabel: "Compliance"
+    skos:definition: "De mate waarin data voldoet aan wetgeving, normen, beleidsregels of contractuele vereisten."
+    dct:source: ["ISO/IEC 25012"]
+    skos:related: [ex:validity]
+    ex:guidanceForAtSource: "Leg vast welke wet- of regelgeving van toepassing is op elk gegevenstype. Zorg dat invoer, opslag en ontsluiting daaraan voldoen."
